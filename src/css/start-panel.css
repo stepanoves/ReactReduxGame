@@ -1,0 +1,9 @@
+.start-panel {
+    margin: auto;
+    width: 200px;
+    padding: 10px;
+}
+
+.start-panel button {
+    width: 100%;
+}
