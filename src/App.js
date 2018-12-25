@@ -1,26 +1,30 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import StartPanelComponent from "./components/StartPanelComponent";
+import GamePanelComponent from "./components/GamePanelComponent";
+
 
 class App extends Component {
+  constructor(props) {
+      super(props);
+      this.state = {
+          started : false
+      }
+  }
+
+  started = (value) => {
+        this.setState({started: value});
+  };
+
+  validatePanels = (value) => {
+        if (value) {
+            return <GamePanelComponent started={this.started}/>
+        } else {
+            return <StartPanelComponent started={this.started}/>;
+        }
+  };
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+        this.validatePanels(this.state.started)
     );
   }
 }
